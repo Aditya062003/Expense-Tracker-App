@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/widgets/expenses.dart';
+// import 'package:flutter/services.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(255, 96, 59, 181),
@@ -11,10 +12,17 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 );
 
 void main() {
-  runApp(MyApp());
+  // app always on potrait mode
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]).then((fn) {
+  runApp(const MyApp());
+  // });
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
   @override
   State<MyApp> createState() {
     return _MyAppState();
@@ -46,12 +54,18 @@ class _MyAppState extends State<MyApp> {
             foregroundColor: kDarkColorScheme.onPrimaryContainer,
           ),
         ),
-        // textTheme: ThemeData().textTheme.copyWith(
-        //       titleLarge: const TextStyle(
-        //         fontWeight: FontWeight.bold,
-        //         fontSize: 16,
-        //       ),
-        //     ),
+        textTheme: ThemeData().textTheme.copyWith(
+              titleLarge: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kDarkColorScheme.onSecondaryContainer,
+                fontSize: 16,
+              ),
+              titleSmall: TextStyle(
+                // fontWeight: FontWeight.bold,
+                color: kDarkColorScheme.onSecondaryContainer,
+                // fontSize: 16,
+              ),
+            ),
       ),
       theme: ThemeData().copyWith(
         useMaterial3: true,
